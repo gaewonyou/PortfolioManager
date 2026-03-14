@@ -1,8 +1,8 @@
 {
   "meta": {
-    "title": "개인 자산 관리 대시보드",
-    "generatedAt": "2026-03-14T07:05:07.677Z",
-    "lastSyncedAt": "2026-03-14T07:05:07.677Z",
+    "title": "GW Portfolio Dashboard",
+    "generatedAt": "2026-03-14T08:30:00.000Z",
+    "lastSyncedAt": "2026-03-14T08:30:00.000Z",
     "owner": "gaewonyou",
     "repo": "PortfolioManager",
     "branch": "main",
@@ -12,7 +12,7 @@
   "positions": [
     {
       "id": "pos-005930",
-      "ticker": "5930",
+      "ticker": "005930",
       "name": "삼성전자",
       "market": "KRX",
       "assetType": "STOCK",
@@ -22,8 +22,7 @@
       "quantity": 18,
       "averageCost": 70200,
       "price": 74800,
-      "previousClose": 74200,
-      "manualPrice": false
+      "previousClose": 74200
     },
     {
       "id": "pos-aapl",
@@ -37,8 +36,7 @@
       "quantity": 12,
       "averageCost": 178,
       "price": 211.2,
-      "previousClose": 208.5,
-      "manualPrice": false
+      "previousClose": 208.5
     },
     {
       "id": "pos-vti",
@@ -52,8 +50,7 @@
       "quantity": 9,
       "averageCost": 244.6,
       "price": 271.1,
-      "previousClose": 269.8,
-      "manualPrice": false
+      "previousClose": 269.8
     },
     {
       "id": "pos-gold",
@@ -75,7 +72,7 @@
     {
       "id": "tx-1",
       "date": "2025-10-15",
-      "ticker": "5930",
+      "ticker": "005930",
       "name": "삼성전자",
       "market": "KRX",
       "assetType": "STOCK",
@@ -90,7 +87,7 @@
     {
       "id": "tx-2",
       "date": "2025-11-21",
-      "ticker": "5930",
+      "ticker": "005930",
       "name": "삼성전자",
       "market": "KRX",
       "assetType": "STOCK",
@@ -143,7 +140,7 @@
       "side": "SELL",
       "quantity": 2,
       "price": 206.4,
-      "fees": 1,
+      "fees": 1.0,
       "taxes": 0,
       "currency": "USD"
     },
