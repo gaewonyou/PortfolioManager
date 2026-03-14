@@ -1,0 +1,58 @@
+﻿name: Sync Portfolio Data
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+    inputs:
+      triggered_by:
+        description: "Who requested this run"
+        required: false
+        default: "manual"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync Google Sheets
+        env:
+          GOOGLE_SHEETS_SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEETS_SPREADSHEET_ID }}
+          GOOGLE_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL }}
+          GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+          PORTFOLIO_TITLE: ${{ vars.PORTFOLIO_TITLE }}
+          PORTFOLIO_BRANCH: ${{ vars.PORTFOLIO_BRANCH || 'main' }}
+          PORTFOLIO_WORKFLOW_FILE: sync-portfolio.yml
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+          GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}
+          SHEET_TRANSACTIONS_RANGE: ${{ vars.SHEET_TRANSACTIONS_RANGE || 'transactions!A:Z' }}
+          SHEET_HOLDINGS_RANGE: ${{ vars.SHEET_HOLDINGS_RANGE || 'holdings_snapshot!A:Z' }}
+          SHEET_CASH_RANGE: ${{ vars.SHEET_CASH_RANGE || 'cash_balances!A:Z' }}
+          SHEET_FX_RANGE: ${{ vars.SHEET_FX_RANGE || 'fx_rates!A:Z' }}
+          SHEET_HISTORY_RANGE: ${{ vars.SHEET_HISTORY_RANGE || '' }}
+        run: npm run sync:portfolio
+
+      - name: Commit synced data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/portfolio.json
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: sync portfolio data"
+          git push
