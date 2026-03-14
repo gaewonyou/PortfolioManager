@@ -1,4 +1,4 @@
-﻿import type { DisplayCurrency } from "../types";
+import type { DisplayCurrency } from "../types";
 
 export function formatMoney(value: number, currency: DisplayCurrency) {
   return new Intl.NumberFormat("ko-KR", {

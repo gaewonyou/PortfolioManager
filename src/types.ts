@@ -1,4 +1,4 @@
-﻿export type DisplayCurrency = "KRW" | "USD";
+export type DisplayCurrency = "KRW" | "USD";
 
 export type TradeSide = "BUY" | "SELL";
 

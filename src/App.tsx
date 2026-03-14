@@ -1,4 +1,4 @@
-﻿import { startTransition, useDeferredValue, useEffect, useState, type ReactNode } from "react";
+import { startTransition, useDeferredValue, useEffect, useState, type ReactNode } from "react";
 import {
   Area,
   AreaChart,

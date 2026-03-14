@@ -1,4 +1,4 @@
-﻿# 자산 관리 GitHub Pages 대시보드
+# 자산 관리 GitHub Pages 대시보드
 
 GitHub Pages에서 운영하는 정적 자산 관리 웹앱입니다. `Google Sheets + GOOGLEFINANCE`를 시세 원천으로 사용하고, `GitHub Actions`가 비공개 시트의 데이터를 정적 `JSON`으로 동기화합니다. 공개 페이지는 읽기 전용이고, 관리자 모드에서는 개인 GitHub 토큰으로 즉시 갱신 워크플로를 실행할 수 있습니다.
 

@@ -1,4 +1,4 @@
-﻿import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { buildPortfolioView } from "./portfolio";
 import type { PortfolioData } from "../types";
 
